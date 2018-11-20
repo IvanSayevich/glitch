@@ -25,16 +25,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  let ip;
+  let ip = req.connection.remoteAddress;
   let lang = req.headers["accept-language"];
-  let soft = eq.headers["user-agent"];
+  let soft = req.headers["user-agent"];
   console.log(req.headers);
   console.log(req.connection.remoteAddress);
   
   res.json({
-    "ipaddress": req.connection.remoteAddress,
-    "language": req.headers["accept-language"],
-    "software": req.headers["user-agent"]
+    "ipaddress": ip,
+    "language": lang,
+    "software": soft
   });
 });
 
