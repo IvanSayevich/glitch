@@ -26,8 +26,8 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/whoami", function (req, res) {
   let ip;
-  let lang;
-  let soft;
+  let lang = req.headers["accept-language"];
+  let soft = eq.headers["user-agent"];
   console.log(req.headers);
   console.log(req.connection.remoteAddress);
   
